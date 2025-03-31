@@ -1,6 +1,14 @@
-import csv
-import sys
-from typing import List, Dict
+import csv                      #Importamos la libreria csv para el manejo de archivos csv
+import sys                      #Importamos la libreria sys para manejar errores
+from typing import List, Dict   #Importamos las librerias necesarias para el manejo de listas y diccionarios
+
+#Requerimientos 
+# 01 Balance Final: #01 Suma de los montos de las transacciones de tipo "Crédito " 
+# menos la suma de los montos de las transacciones de tipo "Débito".
+
+#02 Transacción de Mayor Monto: #Identificar el ID y el monto de la transacción con el valor más alto.
+#Conteo de Transacciones:
+#03 Número total de transacciones para cada tipo ("Crédito" y "Débito").
 
 #Definimos la clase transaccion con los 03 atributos de una transaccion bancaria
 class Transaccion:
@@ -9,15 +17,22 @@ class Transaccion:
         self.tipo = tipo
         self.monto = monto
 
+# Definimos la clase ProcesadorTransacciones que se encargara de procesar el archivo csv 
+# y realizar los calculos necesarios para el reporte
 class ProcesadorTransacciones:
     def __init__(self, archivo_csv: str):
-        self.archivo_csv = archivo_csv
-        self.transacciones: List[Transaccion] = []
+        self.archivo_csv = archivo_csv  #Ruta del archivo CSV que contiene las transacciones.
+        self.transacciones: List[Transaccion] = [] #Lista que almacenará objetos de tipo Transaccion.
+
 
     def cargar_transacciones(self):
+        # Carga las transacciones desde el archivo CSV y las almacena en la lista de transacciones.
+        # Maneja errores comunes como archivo no encontrado o formato incorrecto.
         try:
             with open(self.archivo_csv, newline='', encoding='utf-8') as archivo:
                 lector = csv.DictReader(archivo)
+
+                #Bucle for: Recorre cada fila del CSV. / creamos el objetos que va tener la siguiente estructura.
                 for fila in lector:
                     self.transacciones.append(Transaccion(fila['transaccion_id'], fila['tipo'], float(fila['monto'])))
         except FileNotFoundError:
@@ -30,12 +45,17 @@ class ProcesadorTransacciones:
             print("Error: Hay valores no válidos en el archivo CSV.")
             sys.exit(1)
 
+    # Calcula el balance final sumando los montos de las transacciones de tipo "Crédito" y restando los montos de las transacciones de tipo "Débito".
     def calcular_balance_final(self) -> float:
-        return sum(t.monto if t.tipo == "Crédito" else -t.monto for t in self.transacciones)
-
+        return sum(t.monto if t.tipo == "Crédito" 
+                   else -t.monto 
+                   for t in self.transacciones)
+    #Buscamos el monto mayor de las transacciones y lo retornamos.
+    #Se compara los objetos Transaccion por su atributo monto. 
     def obtener_transaccion_mayor_monto(self) -> Transaccion:
         return max(self.transacciones, key=lambda t: t.monto, default=None)
 
+    #Contamos las transacciones de tipo "Crédito" y "Débito" y retornamos un diccionario con el conteo.
     def contar_transacciones(self) -> Dict[str, int]:
         conteo = {"Crédito": 0, "Débito": 0}
         for t in self.transacciones:
