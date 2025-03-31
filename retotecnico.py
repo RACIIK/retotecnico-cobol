@@ -1,11 +1,10 @@
-import csv                      #Importamos la libreria csv para el manejo de archivos csv
-import sys                      #Importamos la libreria sys para manejar errores
-from typing import List, Dict   #Importamos las librerias necesarias para el manejo de listas y diccionarios
+import csv                      #libreria csv para el manejo de archivos csv
+import sys                      # sys para manejar errores
+from typing import List, Dict   #librerias necesarias para el manejo de listas y diccionarios
 
 #Requerimientos 
 # 01 Balance Final: #01 Suma de los montos de las transacciones de tipo "Crédito " 
 # menos la suma de los montos de las transacciones de tipo "Débito".
-
 #02 Transacción de Mayor Monto: #Identificar el ID y el monto de la transacción con el valor más alto.
 #Conteo de Transacciones:
 #03 Número total de transacciones para cada tipo ("Crédito" y "Débito").
@@ -18,7 +17,7 @@ class Transaccion:
         self.monto = monto
 
 # Definimos la clase ProcesadorTransacciones que se encargara de procesar el archivo csv 
-# y realizar los calculos necesarios para el reporte
+# y realizar los calculos  para el reporte
 class ProcesadorTransacciones:
     def __init__(self, archivo_csv: str):
         self.archivo_csv = archivo_csv  #Ruta del archivo CSV que contiene las transacciones.
@@ -55,7 +54,7 @@ class ProcesadorTransacciones:
     def obtener_transaccion_mayor_monto(self) -> Transaccion:
         return max(self.transacciones, key=lambda t: t.monto, default=None)
 
-    #Contamos las transacciones de tipo "Crédito" y "Débito" y retornamos un diccionario con el conteo.
+    #Contamos las transacciones de tipo "Crédito" y "Débito" y retornamos un diccionario con el conteo. | diccionario 
     def contar_transacciones(self) -> Dict[str, int]:
         conteo = {"Crédito": 0, "Débito": 0}
         for t in self.transacciones:
