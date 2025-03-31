@@ -52,7 +52,7 @@ class ProcesadorTransacciones:
         print("----------------------------------------------")
         print(f"Balance Final: {balance_final:.2f}")
         if transaccion_max:
-            print(f"Transacción de Mayor Monto: ID {transaccion_max.transaccion_id} - {transaccion_max.monto:.2f}")
+            print(f"Transacción de Mayor Monto: ID {transaccion_max.transaccion_id} | {transaccion_max.monto:.2f}")
         print(f"Conteo de Transacciones: Crédito: {conteo_transacciones['Crédito']} Débito: {conteo_transacciones['Débito']}")
 
 if __name__ == "__main__":
