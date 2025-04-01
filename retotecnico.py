@@ -16,8 +16,7 @@ class Transaccion:
         self.tipo = tipo
         self.monto = monto
 
-# Definimos la clase ProcesadorTransacciones que se encargara de procesar el archivo csv 
-# y realizar los calculos  para el reporte
+# Definimos la clase ProcesadorTransacciones que se encargara de procesar el archivo csv y realizar los calculos para el reporte
 class ProcesadorTransacciones:
     def __init__(self, archivo_csv: str):
         self.archivo_csv = archivo_csv  #Ruta del archivo CSV que contiene las transacciones.
