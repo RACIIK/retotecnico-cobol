@@ -73,9 +73,10 @@ class ProcesadorTransacciones:
             print(f"Transacción de Mayor Monto: ID {transaccion_max.transaccion_id} | {transaccion_max.monto:.2f}")
         print(f"Conteo de Transacciones: Crédito: {conteo_transacciones['Crédito']} Débito: {conteo_transacciones['Débito']}")
 
+#Verifiaciones de errores y manejo de excepciones.
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Uso: python script.py archivo.csv")
+        print("Uso: python retotecnico.py archivo.csv")
         sys.exit(1)
     
     procesador = ProcesadorTransacciones(sys.argv[1])
