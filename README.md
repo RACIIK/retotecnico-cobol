@@ -18,7 +18,7 @@ Este reto técnico consiste en desarrollar una aplicación de línea de comandos
   - **"Débito"** 🔴  
 
 ## Instrucciones de Uso  
-1. Ejecutar la aplicación en la terminal.  
+1. Ejecutar la aplicación en la terminal. Usar retotecnico.py archivo.csv en la consola.
 2. Ingresar el archivo de transacciones o introducir los datos manualmente.  
 3. Obtener los cálculos requeridos de manera inmediata.  
 
